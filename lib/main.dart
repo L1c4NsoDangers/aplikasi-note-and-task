@@ -1,81 +1,121 @@
 import 'package:flutter/material.dart';
 import 'login_page.dart';
+// ignore: depend_on_referenced_packages
+import 'package:animate_do/animate_do.dart';
 import 'register_page.dart';
 
 void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: HomePage(),
-    );
-  }
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: HomePage(),
+  ));
 }
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('EasyList'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Welcome to the EasyList application.',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-            Text(
-              'Wherever and whenever, we are always ready!',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 20), // Spasi antara teks dan tombol
-            ElevatedButton(
-              onPressed: () {
-                // Navigasi ke halaman masuk akun ketika tombol "Login" ditekan
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => LoginPage()),
-                );
-              },
-              child: Text(
-                'Login',
-                style: TextStyle(color: Colors.white),
+      body: SafeArea(
+        child: Container(
+          width: double.infinity,
+          height: MediaQuery.of(context).size.height,
+          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 50),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Column(
+                children: <Widget>[
+                  FadeInUp(
+                      duration: Duration(milliseconds: 1000),
+                      child: Text(
+                        "EasyList App",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 30),
+                      )),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  FadeInUp(
+                      duration: Duration(milliseconds: 1200),
+                      child: Text(
+                        "Welcome to the EasyList application.\n"
+                        "Wherever and whenever, we are always ready!",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Colors.grey[700], fontSize: 15),
+                      )),
+                ],
               ),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue, // Warna latar belakang tombol
-                textStyle: TextStyle(fontSize: 16), // Ukuran teks tombol
-                padding: EdgeInsets.symmetric(
-                    horizontal: 20, vertical: 10), // Padding tombol
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)), // Bentuk tombol
-              ),
-            ),
-            SizedBox(height: 10), // Spasi antara tombol login dan register
-            ElevatedButton(
-              onPressed: () {
-                // Navigasi ke halaman registrasi saat tombol "Register" ditekan
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => RegisterPage()),
-                );
-              },
-              child: Text('Register', style: TextStyle(color: Colors.white)),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.green, // Warna latar belakang tombol
-                textStyle: TextStyle(fontSize: 16), // Ukuran teks tombol
-                padding: EdgeInsets.symmetric(
-                    horizontal: 20, vertical: 10), // Padding tombol
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)), // Bentuk tombol
-              ),
-            ),
-          ],
+              FadeInUp(
+                  duration: Duration(milliseconds: 1400),
+                  child: Container(
+                    height: MediaQuery.of(context).size.height / 3,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image:
+                                AssetImage('assets/images/illustration.png'))),
+                  )),
+              Column(
+                children: <Widget>[
+                  FadeInUp(
+                      duration: Duration(milliseconds: 1500),
+                      child: MaterialButton(
+                        minWidth: double.infinity,
+                        height: 60,
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => LoginPage()));
+                        },
+                        shape: RoundedRectangleBorder(
+                            side: BorderSide(color: Colors.black),
+                            borderRadius: BorderRadius.circular(50)),
+                        child: Text(
+                          "Login",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600, fontSize: 18),
+                        ),
+                      )),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  FadeInUp(
+                      duration: Duration(milliseconds: 1600),
+                      child: Container(
+                        padding: EdgeInsets.only(top: 3, left: 3),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            border: Border(
+                              bottom: BorderSide(color: Colors.black),
+                              top: BorderSide(color: Colors.black),
+                              left: BorderSide(color: Colors.black),
+                              right: BorderSide(color: Colors.black),
+                            )),
+                        child: MaterialButton(
+                          minWidth: double.infinity,
+                          height: 60,
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => RegisterPage()));
+                          },
+                          color: Colors.yellow,
+                          elevation: 0,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(50)),
+                          child: Text(
+                            "Sign up",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600, fontSize: 18),
+                          ),
+                        ),
+                      ))
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );

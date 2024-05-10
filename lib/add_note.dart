@@ -37,6 +37,7 @@ class _AddNotePageState extends State<AddNotePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Add Note'),
+        backgroundColor: Colors.orangeAccent[100],
         actions: [
           IconButton(
             icon: Icon(Icons.delete),
@@ -46,35 +47,47 @@ class _AddNotePageState extends State<AddNotePage> {
           ),
         ],
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextField(
               controller: titleController,
-              decoration: InputDecoration(labelText: 'Title'),
+              decoration: InputDecoration(
+                labelText: 'Title',
+                border: OutlineInputBorder(),
+              ),
             ),
             SizedBox(height: 16),
             TextField(
               controller: dateController,
-              decoration: InputDecoration(labelText: 'Date'),
+              decoration: InputDecoration(
+                labelText: 'Date',
+                border: OutlineInputBorder(),
+              ),
             ),
             SizedBox(height: 16),
             TextField(
               controller: descriptionController,
-              decoration: InputDecoration(labelText: 'Description'),
+              decoration: InputDecoration(
+                labelText: 'Description',
+                border: OutlineInputBorder(),
+              ),
             ),
             SizedBox(height: 16),
             TextField(
               controller: contentController,
-              decoration: InputDecoration(labelText: 'Content'),
+              decoration: InputDecoration(
+                labelText: 'Content',
+                border: OutlineInputBorder(),
+              ),
               maxLines: 8,
             ),
             SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
-                // Menyimpan catatan dan menutup halaman
+                // Save note and close the page
                 String newNote =
                     '${titleController.text}\n${dateController.text}\n${descriptionController.text}\n${contentController.text}';
                 Navigator.pop(context, newNote);
@@ -101,7 +114,7 @@ class _AddNotePageState extends State<AddNotePage> {
             ),
             TextButton(
               onPressed: () {
-                // Menghapus catatan dan menutup halaman
+                // Delete note and close the page
                 Navigator.pop(context, '');
               },
               child: Text("Delete"),

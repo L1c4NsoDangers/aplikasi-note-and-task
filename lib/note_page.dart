@@ -14,6 +14,7 @@ class _NotePageState extends State<NotePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Notes'),
+        backgroundColor: Colors.orangeAccent,
       ),
       body: ListView.builder(
         itemCount: notes.length,

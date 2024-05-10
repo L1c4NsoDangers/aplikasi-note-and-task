@@ -13,6 +13,10 @@ class DashboardApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Dashboard',
+      theme: ThemeData(
+        primaryColor: Colors.orange, // Set primary color to orange
+        secondaryHeaderColor: Colors.blue, // Set accent color to blue
+      ),
       home: DashboardScreen(),
     );
   }
@@ -24,83 +28,169 @@ class DashboardScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Dashboard'),
-        backgroundColor: Colors.orange,
+        backgroundColor: Colors.orangeAccent,
       ),
       drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.orange,
-              ),
-              child: Text(
-                'EasyList',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
+        child: Container(
+          color: Colors.white70, // Set background color
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              DrawerHeader(
+                decoration: BoxDecoration(
+                  color: Colors.orangeAccent, // Use your preferred color
+                ),
+                child: Center(
+                  child: Text(
+                    'EasyList',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ),
-            ),
-            ListTile(
-              title: Text(
-                'Profile',
-                style: TextStyle(
-                  fontSize: 18,
+              ListTile(
+                title: Text(
+                  'Profile',
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.black,
+                  ),
                 ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ProfilePage()),
+                  );
+                },
               ),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ProfilePage()),
-                );
-              },
-            ),
-            ListTile(
-              title: Text(
-                'Note',
-                style: TextStyle(
-                  fontSize: 18,
+              ListTile(
+                title: Text(
+                  'Note',
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.black,
+                  ),
                 ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => NotePage()),
+                  );
+                },
               ),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => NotePage()),
-                );
-              },
-            ),
-            ListTile(
-              title: Text(
-                'Tasks',
-                style: TextStyle(
-                  fontSize: 18,
+              ListTile(
+                title: Text(
+                  'Tasks',
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.black,
+                  ),
                 ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => TaskPage()),
+                  );
+                },
               ),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => TaskPage()),
-                );
-              },
-            ),
-            ListTile(
-              title: Text(
-                'Logout',
-                style: TextStyle(
-                  fontSize: 18,
+              ListTile(
+                title: Text(
+                  'Logout',
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.black,
+                  ),
                 ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => HomePage()),
+                  );
+                },
               ),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => HomePage()),
-                );
-              },
-            ),
-          ],
+            ],
+          ),
         ),
       ),
+      // drawer: Drawer(
+      //   child: ListView(
+      //     padding: EdgeInsets.zero,
+      //     children: <Widget>[
+      //       DrawerHeader(
+      //         decoration: BoxDecoration(
+      //           color: Theme.of(context)
+      //               .primaryColor, // Use primary color from theme
+      //         ),
+      //         child: Text(
+      //           'EasyList',
+      //           style: TextStyle(
+      //             color: Colors.white,
+      //             fontSize: 24,
+      //           ),
+      //         ),
+      //       ),
+      //       ListTile(
+      //         title: Text(
+      //           'Profile',
+      //           style: TextStyle(
+      //             fontSize: 18,
+      //           ),
+      //         ),
+      //         onTap: () {
+      //           Navigator.push(
+      //             context,
+      //             MaterialPageRoute(builder: (context) => ProfilePage()),
+      //           );
+      //         },
+      //       ),
+      //       ListTile(
+      //         title: Text(
+      //           'Note',
+      //           style: TextStyle(
+      //             fontSize: 18,
+      //           ),
+      //         ),
+      //         onTap: () {
+      //           Navigator.push(
+      //             context,
+      //             MaterialPageRoute(builder: (context) => NotePage()),
+      //           );
+      //         },
+      //       ),
+      //       ListTile(
+      //         title: Text(
+      //           'Tasks',
+      //           style: TextStyle(
+      //             fontSize: 18,
+      //           ),
+      //         ),
+      //         onTap: () {
+      //           Navigator.push(
+      //             context,
+      //             MaterialPageRoute(builder: (context) => TaskPage()),
+      //           );
+      //         },
+      //       ),
+      //       ListTile(
+      //         title: Text(
+      //           'Logout',
+      //           style: TextStyle(
+      //             fontSize: 18,
+      //           ),
+      //         ),
+      //         onTap: () {
+      //           Navigator.push(
+      //             context,
+      //             MaterialPageRoute(builder: (context) => HomePage()),
+      //           );
+      //         },
+      //       ),
+      //     ],
+      //   ),
+      // ),
       body: Padding(
         padding: EdgeInsets.all(20.0),
         child: Column(
@@ -166,7 +256,8 @@ class DashboardItem extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black87,
+                  color: Theme.of(context)
+                      .secondaryHeaderColor, // Use accent color from theme
                 ),
               ),
               SizedBox(height: 10),
@@ -175,7 +266,8 @@ class DashboardItem extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: Colors.blue,
+                  color: Theme.of(context)
+                      .primaryColor, // Use primary color from theme
                 ),
               ),
             ],

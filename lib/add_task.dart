@@ -11,7 +11,7 @@ class AddTaskPage extends StatefulWidget {
       this.date,
       this.description,
       this.content,
-      required String task}); // Mengganti "note" menjadi "task"
+      required String task});
 
   @override
   _AddTaskPageState createState() => _AddTaskPageState();
@@ -36,7 +36,8 @@ class _AddTaskPageState extends State<AddTaskPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add Task'), // Mengubah judul halaman
+        title: Text('Add Task'), // Changed the page title
+        backgroundColor: Colors.orangeAccent[100],
         actions: [
           IconButton(
             icon: Icon(Icons.delete),
@@ -46,38 +47,50 @@ class _AddTaskPageState extends State<AddTaskPage> {
           ),
         ],
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextField(
               controller: titleController,
-              decoration: InputDecoration(labelText: 'Title'),
+              decoration: InputDecoration(
+                labelText: 'Title',
+                border: OutlineInputBorder(),
+              ),
             ),
             SizedBox(height: 16),
             TextField(
               controller: dateController,
-              decoration: InputDecoration(labelText: 'Date'),
+              decoration: InputDecoration(
+                labelText: 'Date',
+                border: OutlineInputBorder(),
+              ),
             ),
             SizedBox(height: 16),
             TextField(
               controller: descriptionController,
-              decoration: InputDecoration(labelText: 'Description'),
+              decoration: InputDecoration(
+                labelText: 'Description',
+                border: OutlineInputBorder(),
+              ),
             ),
             SizedBox(height: 16),
             TextField(
               controller: contentController,
-              decoration: InputDecoration(labelText: 'Content'),
+              decoration: InputDecoration(
+                labelText: 'Content',
+                border: OutlineInputBorder(),
+              ),
               maxLines: 8,
             ),
             SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
-                // Menyimpan catatan dan menutup halaman
-                String newNote =
+                // Save task and close the page
+                String newTask =
                     '${titleController.text}\n${dateController.text}\n${descriptionController.text}\n${contentController.text}';
-                Navigator.pop(context, newNote);
+                Navigator.pop(context, newTask);
               },
               child: Text('Save'),
             ),
@@ -92,7 +105,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Delete Task"), // Mengubah judul dialog
+          title: Text("Delete Task"), // Changed the dialog title
           content: Text("Are you sure you want to delete this task?"),
           actions: <Widget>[
             TextButton(
@@ -101,7 +114,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
             ),
             TextButton(
               onPressed: () {
-                // Menghapus catatan dan menutup halaman
+                // Delete task and close the page
                 Navigator.pop(context, '');
               },
               child: Text("Delete"),

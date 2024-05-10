@@ -14,6 +14,7 @@ class _TaskPageState extends State<TaskPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Tasks'), // Mengubah judul halaman
+        backgroundColor: Colors.orangeAccent,
       ),
       body: ListView.builder(
         itemCount: tasks.length, // Mengubah jumlah item menjadi tasks.length

@@ -6,17 +6,16 @@ class ProfilePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Profile'),
+        backgroundColor: Colors.orangeAccent,
       ),
       body: Padding(
         padding: EdgeInsets.all(20),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Center(
-              child: CircleAvatar(
-                backgroundImage: AssetImage('assets/images/pp.jpg'),
-                radius: 50,
-              ),
+            CircleAvatar(
+              backgroundImage: AssetImage('assets/images/pp.jpg'),
+              radius: 70,
             ),
             SizedBox(height: 20),
             ProfileField(
@@ -33,11 +32,14 @@ class ProfilePage extends StatelessWidget {
               value: '••••••••', // Tidak menampilkan password secara langsung
             ),
             SizedBox(height: 20),
-            TextButton(
+            ElevatedButton(
               onPressed: () {
                 // Tambahkan fungsi untuk mereset password
               },
               child: Text('Reset Password'),
+              style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+              ),
             ),
           ],
         ),
@@ -55,13 +57,15 @@ class ProfileField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
+        SizedBox(height: 10),
         Text(
           label,
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.bold,
+            color: Colors.grey[700],
           ),
         ),
         SizedBox(height: 5),
@@ -69,7 +73,11 @@ class ProfileField extends StatelessWidget {
           value,
           style: TextStyle(fontSize: 16),
         ),
-        SizedBox(height: 20),
+        SizedBox(height: 10),
+        Divider(
+          color: Colors.grey[300],
+          thickness: 1,
+        ),
       ],
     );
   }
